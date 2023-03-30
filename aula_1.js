@@ -1,12 +1,13 @@
-/* Base */
-const paises = require('./countries')
+const countries = require('./countries')
 
-const search = process.argv[2]
+const searchQuery = process.argv[2]
 
-/* return fruits.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) > -1); */
+const filterCountries = (countries, query) => {
+  return countries.filter(country => {
+    return country.name.toLowerCase().includes(query.toLowerCase())
+  })
+}
 
-const filtro_search = f => f.name == search
+const filteredCountries = filterCountries(countries, searchQuery)
 
-const chamar_filter = paises.filter(filtro_search)
-
-console.table(chamar_filter)
+console.table(filteredCountries)
